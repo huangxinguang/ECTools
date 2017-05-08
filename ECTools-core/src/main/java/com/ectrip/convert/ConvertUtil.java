@@ -15,9 +15,9 @@ import java.util.concurrent.TimeUnit;
  *
  * 
  */
-public final class Convert {
+public final class ConvertUtil {
 
-	private Convert() {}
+	private ConvertUtil() {}
 
 	/**
 	 * 转换为字符串<br>

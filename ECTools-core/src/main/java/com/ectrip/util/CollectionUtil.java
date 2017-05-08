@@ -1,6 +1,6 @@
 package com.ectrip.util;
 
-import com.ectrip.convert.Convert;
+import com.ectrip.convert.ConvertUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.Stack;
 import java.util.TreeSet;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -51,7 +50,7 @@ public final class CollectionUtil {
 			final Map<T, Integer> map2 = countMap(coll2);
 			final Set<T> elts = newHashSet(coll2);
 			for (T t : elts) {
-				for (int i = 0, m = Math.max(Convert.toInt(map1.get(t), 0), Convert.toInt(map2.get(t), 0)); i < m; i++) {
+				for (int i = 0, m = Math.max(ConvertUtil.toInt(map1.get(t), 0), ConvertUtil.toInt(map2.get(t), 0)); i < m; i++) {
 					list.add(t);
 				}
 			}
@@ -95,7 +94,7 @@ public final class CollectionUtil {
 			final Map<T, Integer> map2 = countMap(coll2);
 			final Set<T> elts = newHashSet(coll2);
 			for (T t : elts) {
-				for (int i = 0, m = Math.min(Convert.toInt(map1.get(t), 0), Convert.toInt(map2.get(t), 0)); i < m; i++) {
+				for (int i = 0, m = Math.min(ConvertUtil.toInt(map1.get(t), 0), ConvertUtil.toInt(map2.get(t), 0)); i < m; i++) {
 					list.add(t);
 				}
 			}
@@ -145,7 +144,7 @@ public final class CollectionUtil {
 			final Map<T, Integer> map2 = countMap(coll2);
 			final Set<T> elts = newHashSet(coll2);
 			for (T t : elts) {
-				for (int i = 0, m = Math.max(Convert.toInt(map1.get(t), 0), Convert.toInt(map2.get(t), 0)) - Math.min(Convert.toInt(map1.get(t), 0), Convert.toInt(map2.get(t), 0)); i < m; i++) {
+				for (int i = 0, m = Math.max(ConvertUtil.toInt(map1.get(t), 0), ConvertUtil.toInt(map2.get(t), 0)) - Math.min(ConvertUtil.toInt(map1.get(t), 0), ConvertUtil.toInt(map2.get(t), 0)); i < m; i++) {
 					list.add(t);
 				}
 			}

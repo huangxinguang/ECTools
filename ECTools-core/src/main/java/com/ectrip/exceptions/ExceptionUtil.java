@@ -3,15 +3,15 @@ package com.ectrip.exceptions;
 import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
+import java.util.HashMap;
 import java.util.Map;
 
+import com.ectrip.io.FastByteArrayOutputStream;
 import com.ectrip.util.CollectionUtil;
 import com.ectrip.util.StringUtil;
 
 /**
  * 异常工具类
- * 
- * @author Looly
  *
  */
 public final class ExceptionUtil {

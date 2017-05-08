@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.lang.management.ManagementFactory;
 import java.util.Properties;
 
-import com.ectrip.convert.Convert;
+import com.ectrip.convert.ConvertUtil;
 import com.ectrip.lang.Console;
 import com.ectrip.lang.Singleton;
 import com.ectrip.util.StringUtil;
@@ -163,7 +163,7 @@ public final class SystemUtil {
 	 * @return 值
 	 */
 	public static long getInt(String key, int defaultValue) {
-		return Convert.toInt(get(key), defaultValue);
+		return ConvertUtil.toInt(get(key), defaultValue);
 	}
 
 	/**
@@ -174,7 +174,7 @@ public final class SystemUtil {
 	 * @return 值
 	 */
 	public static long getLong(String key, long defaultValue) {
-		return Convert.toLong(get(key), defaultValue);
+		return ConvertUtil.toLong(get(key), defaultValue);
 	}
 
 	/**
@@ -318,6 +318,6 @@ public final class SystemUtil {
 	 * @param value 值
 	 */
 	protected static void append(StringBuilder builder, String caption, Object value) {
-		builder.append(caption).append(StringUtil.nullToDefault(Convert.toStr(value), "[n/a]")).append("\n");
+		builder.append(caption).append(StringUtil.nullToDefault(ConvertUtil.toStr(value), "[n/a]")).append("\n");
 	}
 }

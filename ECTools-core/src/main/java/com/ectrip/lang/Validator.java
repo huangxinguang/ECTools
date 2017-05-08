@@ -4,11 +4,11 @@ import java.net.MalformedURLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.ectrip.convert.Convert;
+import com.ectrip.convert.ConvertUtil;
 import com.ectrip.date.DateUtil;
 import com.ectrip.exceptions.ValidateException;
 import com.ectrip.util.ObjectUtil;
-import com.ectrip.util.ReUtil;
+import com.ectrip.util.RegexUtil;
 import com.ectrip.util.StringUtil;
 
 /**
@@ -166,7 +166,7 @@ public final class Validator {
 	 * @return 是否匹配正则
 	 */
 	public static boolean isMactchRegex(String regex, String value) {
-		return ReUtil.isMatch(regex, value);
+		return RegexUtil.isMatch(regex, value);
 	}
 	
 	/**
@@ -192,7 +192,7 @@ public final class Validator {
 	 * @return 是否匹配正则
 	 */
 	public static boolean isMactchRegex(Pattern pattern, String value) {
-		return ReUtil.isMatch(pattern, value);
+		return RegexUtil.isMatch(pattern, value);
 	}
 
 	/**
@@ -471,9 +471,9 @@ public final class Validator {
 		if(isMactchRegex(BIRTHDAY, value)){
 			Matcher matcher = BIRTHDAY.matcher(value);
 			if(matcher.find()){
-				int year = Convert.toInt(matcher.group(1));
-				int month = Convert.toInt(matcher.group(3));
-				int day = Convert.toInt(matcher.group(5));
+				int year = ConvertUtil.toInt(matcher.group(1));
+				int month = ConvertUtil.toInt(matcher.group(3));
+				int day = ConvertUtil.toInt(matcher.group(5));
 				return isBirthday(year, month, day);
 			}
 		}
@@ -551,7 +551,7 @@ public final class Validator {
 	 * @return 是否为汉字
 	 */
 	public static boolean isChinese(String value) {
-		return isMactchRegex("^" + ReUtil.RE_CHINESE + "+$", value);
+		return isMactchRegex("^" + RegexUtil.RE_CHINESE + "+$", value);
 	}
 	
 	/**

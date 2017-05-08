@@ -1,7 +1,7 @@
 package com.ectrip.util;
 
 import com.ectrip.collection.CaseInsensitiveMap;
-import com.ectrip.convert.Convert;
+import com.ectrip.convert.ConvertUtil;
 import com.ectrip.exceptions.UtilException;
 
 import java.beans.IntrospectionException;
@@ -313,7 +313,7 @@ public final class BeanUtil {
 				try {
 					//当类型不匹配的时候，执行默认转换
 					if(false == propertyType.isInstance(value)){
-						value = Convert.convert(propertyType, value);
+						value = ConvertUtil.convert(propertyType, value);
 						if (null == value && copyOptions.ignoreNullValue) {
 							continue;//当允许跳过空时，跳过
 						}
@@ -470,7 +470,7 @@ public final class BeanUtil {
 	public static interface ValueProvider<T>{
 		/**
 		 * 获取值<br>
-		 * 返回值一般需要匹配被注入类型，如果不匹配会调用默认转换 {@link Convert#convert(Class, Object)}实现转换
+		 * 返回值一般需要匹配被注入类型，如果不匹配会调用默认转换 {@link ConvertUtil#convert(Class, Object)}实现转换
 		 * 
 		 * @param key Bean对象中参数名
 		 * @param valueType 被注入的值得类型

@@ -63,7 +63,6 @@ public class HttpClientUtil {
      */
     private static CloseableHttpClient getHttpClient() {
         init();
-        // �������Դ���
         HttpRequestRetryHandler httpRequestRetryHandler = new HttpRequestRetryHandler() {
             public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
                 if (executionCount >= HttpClientConfig.RETRY_NUM) {

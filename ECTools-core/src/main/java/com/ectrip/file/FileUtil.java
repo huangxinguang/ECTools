@@ -49,7 +49,7 @@ public class FileUtil {
 	 * 删除文件
 	 * @param filePathAndName
 	 *            String 文件路径及名称 如c:/fqf.txt
-	 * @param fileContent
+	 * @param filePathAndName
 	 *            String
 	 * @return boolean
 	 */
@@ -173,7 +173,7 @@ public class FileUtil {
 	/**
 	 * Mapped File way MappedByteBuffer 可以在处理大文件时，提升性能
 	 * 
-	 * @param filename
+	 * @param filePath
 	 * @return
 	 * @throws IOException
 	 */
