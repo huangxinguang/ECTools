@@ -10,6 +10,6 @@ public class HttpClientUtilTest {
 
     @Test
     public void testGet() {
-        String result = HttpClientUtil.httpGetRequest("http://www.baidu.com");
+        String result = HttpClientUtil.get("http://www.baidu.com");
     }
 }

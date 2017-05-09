@@ -1,5 +1,9 @@
 package com.ectrip.util;
 
+import com.ectrip.exceptions.UtilException;
+import com.ectrip.io.FastByteArrayOutputStream;
+
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Enumeration;
@@ -149,6 +153,63 @@ public final class ObjectUtil {
 		}
 		return false;
 	}
+
+	/**
+	 * 克隆对象<br>
+	 * 如果对象实现Cloneable接口，调用其clone方法<br>
+	 * 如果实现Serializable接口，执行深度克隆<br>
+	 * 否则返回<code>null</code>
+	 *
+	 * @param obj 被克隆对象
+	 * @return 克隆后的对象
+	 */
+	public static <T> T clone(T obj) {
+		T result = ArrayUtil.clone(obj);
+		if (null == result) {
+			if(obj instanceof Cloneable){
+				result = ClassUtil.invoke(obj, "clone", new Object[] {});
+			}else{
+				result = cloneByStream(obj);
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * 序列化后拷贝流的方式克隆<br>
+	 * 对象必须实现Serializable接口
+	 *
+	 * @param obj 被克隆对象
+	 * @return 克隆后的对象
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> T cloneByStream(T obj) {
+		if(null == obj || false == (obj instanceof Serializable)){
+			return null;
+		}
+		final FastByteArrayOutputStream byteOut = new FastByteArrayOutputStream();
+		ObjectOutputStream out = null;
+		try {
+			out = new ObjectOutputStream(byteOut);
+			out.writeObject(obj);
+			out.flush();
+			final ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(byteOut.toByteArray()));
+			return (T) in.readObject();
+		} catch (Exception e) {
+			throw new UtilException(e);
+		} finally {
+			if(out != null) {
+				try {
+					out.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
 
 	/**
 	 * 检查对象是否为null

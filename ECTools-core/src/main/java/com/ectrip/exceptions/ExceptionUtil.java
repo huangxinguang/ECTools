@@ -87,7 +87,7 @@ public final class ExceptionUtil {
 	 * @return 堆栈转为的字符串
 	 */
 	public static String stacktraceToOneLineString(Throwable throwable, int limit){
-		Map<Character, String> replaceCharToStrMap = new HashMap<>();
+		Map<Character, String> replaceCharToStrMap = new HashMap<Character, String>();
 		replaceCharToStrMap.put(StringUtil.C_CR, StringUtil.SPACE);
 		replaceCharToStrMap.put(StringUtil.C_LF, StringUtil.SPACE);
 		replaceCharToStrMap.put(StringUtil.C_TAB, StringUtil.SPACE);

@@ -115,7 +115,7 @@ public final class ClassUtil {
 	 * @return 方法数组
 	 */
 	public static Method[] getDeclaredMethods(Class<?> clazz) {
-		Set<Method> methodSet = new HashSet<>();
+		Set<Method> methodSet = new HashSet<Method>();
 		Method[] declaredMethods;
 		for (; null != clazz; clazz = clazz.getSuperclass()) {
 			declaredMethods = clazz.getDeclaredMethods();

@@ -29,6 +29,9 @@ public class DateTimeTest {
 		
 		//日
 		int day = dateTime.dayOfMonth();
+
+		DateTime now = DateTime.now();
+		String nowStr = now.toString();
 		Assert.assertEquals(5, day);
 	}
 	

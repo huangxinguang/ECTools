@@ -11,16 +11,14 @@
     <modules>
         <module>ECTools-core</module>
         <module>ECTools-http</module>
-        <module>ECTools-aop</module>
         <module>ECTools-json</module>
         <module>ECtools-system</module>
-        <module>ECTools-exception</module>
+        <module>ECTools-cache</module>
     </modules>
 
     <!--版本-->
     <properties>
         <junit.version>4.12</junit.version>
-        <spring.version>4.1.6.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -31,11 +29,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -53,15 +46,6 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
-
-        <!--spring start-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <!--spring end-->
 
     </dependencies>
 

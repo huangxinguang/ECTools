@@ -1,9 +1,8 @@
 package com.ectrip.core.lang;
 
+import com.ectrip.lang.Base64;
 import org.junit.Assert;
 import org.junit.Test;
-
-import com.xiaoleilu.hutool.lang.Base64;
 
 public class Base64Test {
 	

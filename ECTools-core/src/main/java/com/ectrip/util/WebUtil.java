@@ -1,15 +1,10 @@
 package com.ectrip.util;
-import com.ectrip.json.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.ui.ModelMap;
-import org.springframework.util.Assert;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -50,24 +45,8 @@ public class WebUtil {
         return flag;
     }
 
-    public static void writeJson(HttpServletResponse response, ModelMap model) {
-        response.setContentType("application/json;charset=UTF-8");
-        PrintWriter out = null;
-        try {
-            out = response.getWriter();
-            out.write(JsonUtil.toJson(model));
-            out.flush();
-        } catch (IOException e) {
-            logger.error("response输出Json异常:" + e);
-        } finally {
-            out.close();
-        }
-    }
 
     public static void addCookie(HttpServletRequest request, HttpServletResponse response, String name, String value, Integer maxAge, String path, String domain, Boolean secure) {
-        Assert.notNull(request);
-        Assert.notNull(response);
-        Assert.hasText(name);
         try {
             name = URLEncoder.encode(name, "UTF-8");
             value = URLEncoder.encode(value, "UTF-8");
@@ -99,8 +78,6 @@ public class WebUtil {
     }
 
     public static String getCookie(HttpServletRequest request, String name) {
-        Assert.notNull(request);
-        Assert.hasText(name);
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             try {
@@ -118,9 +95,6 @@ public class WebUtil {
     }
 
     public static void removeCookie(HttpServletRequest request, HttpServletResponse response, String name, String path, String domain) {
-        Assert.notNull(request);
-        Assert.notNull(response);
-        Assert.hasText(name);
         try {
             name = URLEncoder.encode(name, "UTF-8");
             Cookie cookie = new Cookie(name, null);

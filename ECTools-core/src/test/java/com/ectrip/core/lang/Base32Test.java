@@ -1,9 +1,9 @@
 package com.ectrip.core.lang;
 
+import com.ectrip.lang.Base32;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.xiaoleilu.hutool.lang.Base32;
 
 public class Base32Test {
 	

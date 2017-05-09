@@ -103,7 +103,7 @@ class FastDateParser extends AbstractDateBasic implements DateParser {
 	 * @param definingCalendar the {@link Calendar} instance used to initialize this FastDateParser
 	 */
 	private void init(final Calendar definingCalendar) {
-		patterns = new ArrayList<>();
+		patterns = new ArrayList<StrategyAndWidth>();
 
 		final StrategyParser fm = new StrategyParser(definingCalendar);
 		for (;;) {
@@ -306,7 +306,7 @@ class FastDateParser extends AbstractDateBasic implements DateParser {
 		final Map<String, Integer> values = new HashMap<>();
 
 		final Map<String, Integer> displayNames = cal.getDisplayNames(field, Calendar.ALL_STYLES, locale);
-		final TreeSet<String> sorted = new TreeSet<>(LONGER_FIRST_LOWERCASE);
+		final TreeSet<String> sorted = new TreeSet<String>(LONGER_FIRST_LOWERCASE);
 		for (final Map.Entry<String, Integer> displayName : displayNames.entrySet()) {
 			final String key = displayName.getKey().toLowerCase(locale);
 			if (sorted.add(key)) {
@@ -458,7 +458,7 @@ class FastDateParser extends AbstractDateBasic implements DateParser {
 	private static ConcurrentMap<Locale, Strategy> getCache(final int field) {
 		synchronized (caches) {
 			if (caches[field] == null) {
-				caches[field] = new ConcurrentHashMap<>(3);
+				caches[field] = new ConcurrentHashMap<Locale, Strategy>(3);
 			}
 			return caches[field];
 		}

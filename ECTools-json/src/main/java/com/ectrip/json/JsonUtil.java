@@ -5,7 +5,6 @@ import org.codehaus.jackson.type.JavaType;
 import org.codehaus.jackson.type.TypeReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.Assert;
 
 import java.io.Writer;
 
@@ -26,8 +25,6 @@ public class JsonUtil {
     }
 
     public static <T> T toObject(String json, Class<T> valueType) {
-        Assert.hasText(json);
-        Assert.notNull(valueType);
         try {
             return (T) mapper.readValue(json, valueType);
         } catch (Exception e) {
@@ -37,8 +34,6 @@ public class JsonUtil {
     }
 
     public static <T> T toObject(String json, TypeReference<?> typeReference) {
-        Assert.hasText(json);
-        Assert.notNull(typeReference);
         try {
             return (T) mapper.readValue(json, typeReference);
         } catch (Exception e) {
@@ -48,8 +43,6 @@ public class JsonUtil {
     }
 
     public static <T> T toObject(String json, JavaType javaType) {
-        Assert.hasText(json);
-        Assert.notNull(javaType);
         try {
             return (T) mapper.readValue(json, javaType);
         } catch (Exception e) {

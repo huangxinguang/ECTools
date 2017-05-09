@@ -1,8 +1,9 @@
 package com.ectrip.core.lang;
 
+import com.ectrip.lang.Console;
 import org.junit.Test;
 
-import com.xiaoleilu.hutool.lang.Console;
+
 
 /**
  * 控制台单元测试

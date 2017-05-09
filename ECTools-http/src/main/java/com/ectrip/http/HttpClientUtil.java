@@ -117,7 +117,7 @@ public class HttpClientUtil {
      * @param requestUrl
      * @return
      */
-    public static String httpGetRequest(String requestUrl) {
+    public static String get(String requestUrl) {
         HttpGet httpGet = new HttpGet(requestUrl);
         return getResult(httpGet);
     }
@@ -129,7 +129,7 @@ public class HttpClientUtil {
      * @return
      * @throws URISyntaxException
      */
-    public static String httpGetRequest(String requestUrl, Map<String, Object> params) throws URISyntaxException {
+    public static String get(String requestUrl, Map<String, Object> params) throws URISyntaxException {
         URIBuilder ub = new URIBuilder();
         ub.setPath(requestUrl);
 
@@ -148,7 +148,7 @@ public class HttpClientUtil {
      * @return
      * @throws URISyntaxException
      */
-    public static String httpGetRequest(String url, Map<String, Object> headers, Map<String, Object> params)
+    public static String get(String url, Map<String, Object> headers, Map<String, Object> params)
             throws URISyntaxException {
         URIBuilder ub = new URIBuilder();
         ub.setPath(url);
@@ -168,7 +168,7 @@ public class HttpClientUtil {
      * @param url
      * @return
      */
-    public static String httpPostRequest(String url) {
+    public static String post(String url) {
         HttpPost httpPost = new HttpPost(url);
         return getResult(httpPost);
     }
@@ -180,7 +180,7 @@ public class HttpClientUtil {
      * @return
      * @throws UnsupportedEncodingException
      */
-    public static String httpPostRequest(String url, Map<String, Object> params) throws UnsupportedEncodingException {
+    public static String post(String url, Map<String, Object> params) throws UnsupportedEncodingException {
         HttpPost httpPost = new HttpPost(url);
         ArrayList<NameValuePair> pairs = covertParamsToNVPList(params);
         httpPost.setEntity(new UrlEncodedFormEntity(pairs, HttpClientConfig.ENCODING));
@@ -195,7 +195,7 @@ public class HttpClientUtil {
      * @return
      * @throws UnsupportedEncodingException
      */
-    public static String httpPostRequest(String url, Map<String, Object> headers, Map<String, Object> params)
+    public static String post(String url, Map<String, Object> headers, Map<String, Object> params)
             throws UnsupportedEncodingException {
         HttpPost httpPost = new HttpPost(url);
 

@@ -224,9 +224,9 @@ public final class ThreadUtil {
 	 */
 	public static <T> ThreadLocal<T> createThreadLocal(boolean isInheritable){
 		if(isInheritable){
-			return new InheritableThreadLocal<>();
+			return new InheritableThreadLocal<T>();
 		}else{
-			return new ThreadLocal<>();
+			return new ThreadLocal<T>();
 		}
 	}
 	
